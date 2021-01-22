@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_headers %}
+    <script src="{% static 'scripts/scripts.js' %}" type="module"></script>
+    <script src="{% static 'scripts/nomodule.js' %}"></script>
+{% endblock additional_headers %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+   <div class="col-md border" style="margin-top: 20px">
+       <h1>Search</h1>
+       <input id="search_input" name="search_input" type="text"
+              class="form-control form-control-lg border-dark" placeholder="search" autocomplete="off"
+              onChange="search_message(this.value);"/>
+        <div id="search_result"></div>
+   </div>
+
+    <div class="col-lg-auto">
+        <div style="overflow-y: scroll; height:600px; width:600px;margin-top: 50px;" id="scroller">
+            <div id="message_list"></div>
+        </div>
+
+        <form action="{% url 'send' %}" id="message_input_form" method="POST">
+          {% csrf_token %}
+          <div class="form-row align-bottom" style="margin: 30px">
+              <input id="message_input" name="message_input" type="text" class="form-control form-control-lg border-dark" placeholder="message" autocomplete="off">
+              <small id="error_info" class="form-text text-muted"></small>
+          </div>
+        </form>
+    </div>
+
+    <div class="col-md border" style="margin-top: 20px">
+        <div id="flooders_list"></div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,10 @@
+    {% for message in messages %}
+    <div class="bubbleWrapper">
+        <div class="{% if message.own %}own{% else %}other{% endif %}"><p style="text-shadow: 4px 4px 8px gray; color: black">{{ message.user }}</p></div>
+		<div class="inlineContainer {% if message.own %}own{% else %}other{% endif %}">
+			<img class="inlineIcon" src="https://listimg.pinclipart.com/picdir/s/552-5527819_linux-tux-png-clipart.png">
+			<div class="{% if message.own %}ownBubble own{% else %}otherBubble other{% endif %}">{{ message.message }}</div>
+		</div><span class="{% if message.own %}own{% else %}other{% endif %}">{{ message.time }}</span>
+	</div>
+    {% endfor %}
+

@@ -1,0 +1,5 @@
+
+<h1>Top flooders</h1>
+{% for f in flooders %}
+        <p><u><span style="text-shadow: 4px 4px 8px gray; color: black">{{ f.name }}</span>:</u> {{ f.count }} messages</p>
+{% endfor %}
